@@ -1,0 +1,26 @@
+name: historix  
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.0.5
+  http: ^0.13.5
+  postgres: ^3.0.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  speech_to_text: ^6.1.1
+  flutter_tts: ^3.6.3
+  intl: ^0.18.1 # For multilingual support
+dev_dependencies:
+  hive_generator: ^2.0.1
+  build_runner: ^2.3.3
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+assets:
+    - assets/images/brihadeeswarar.jpg
+    - assets/images/meenakshi.jpg
+    - assets/images/mahabalipuram.jpg
+    - assets/icons/chatbot_icon.png
+    - assets/icons/explore_icon.png
+    - assets/icons/profile_icon.png
