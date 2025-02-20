@@ -1,26 +1,48 @@
-name: historix  
+name: historiX
+description: A historical exploration app with a multilingual AI chatbot.
+publish_to: 'none'
 
+environment:
+  sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
+
+  # UI Dependencies
+  cupertino_icons: ^1.0.6 # iOS-style icons
+  
+  # State Management (Optional, if needed later)
   provider: ^6.0.5
-  http: ^0.13.5
-  postgres: ^3.0.0
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
-  speech_to_text: ^6.1.1
-  flutter_tts: ^3.6.3
-  intl: ^0.18.1 # For multilingual support
+  
+  # Networking & APIs (If you need to fetch data)
+  http: ^1.3.0 
+  
+  # Image Picker (If user uploads photos)
+  image_picker: ^1.0.7
+
+  # AI Chatbot Integration (For NLP processing)
+  
+
+
+  # Database (For PostgreSQL Storage)
+  postgres: ^3.5.2
+  path_provider: ^2.1.5
+
 dev_dependencies:
-  hive_generator: ^2.0.1
-  build_runner: ^2.3.3
-environment:
-  sdk: ">=3.0.0 <4.0.0"
-assets:
-    - assets/images/brihadeeswarar.jpg
-    - assets/images/meenakshi.jpg
-    - assets/images/mahabalipuram.jpg
-    - assets/icons/chatbot_icon.png
-    - assets/icons/explore_icon.png
-    - assets/icons/profile_icon.png
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/images/
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/static/Roboto-Regular.ttf
+        - asset: assets/fonts/static/Roboto-Bold.ttf
+          weight: 700

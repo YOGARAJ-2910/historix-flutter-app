@@ -3,27 +3,30 @@ import 'chat_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<Map<String, String>> events = [
-    {"image": "assets/images/brihadeeswarar.jpg", "title": "Brihadeeswarar Temple"},
-    {"image": "assets/images/meenakshi.jpg", "title": "Meenakshi Temple"},
-    {"image": "assets/images/mahabalipuram.jpg", "title": "Mahabalipuram"},
+    {"image": "assets/images/brihadeeswarar.jpeg", "title": "Brihadeeswarar Temple"},
+    {"image": "assets/images/meenakshi.jpeg", "title": "Meenakshi Temple"},
+    {"image": "assets/images/mahabalipuram.jpeg", "title": "Mahabalipuram"},
   ];
 
   final List<Map<String, String>> posts = [
-    {"image": "assets/images/brihadeeswarar.jpg", "title": "Brihadeeswarar Temple", "description": "Explore the ancient Chola architecture."},
-    {"image": "assets/images/meenakshi.jpg", "title": "Meenakshi Temple", "description": "A masterpiece of Dravidian art."},
-    {"image": "assets/images/mahabalipuram.jpg", "title": "Mahabalipuram", "description": "A UNESCO World Heritage site."},
+    {"image": "assets/images/brihadeeswarar.jpeg", "title": "Brihadeeswarar Temple", "description": "Explore the ancient Chola architecture."},
+    {"image": "assets/images/meenakshi.jpeg", "title": "Meenakshi Temple", "description": "A masterpiece of Dravidian art."},
+    {"image": "assets/images/mahabalipuram.jpeg", "title": "Mahabalipuram", "description": "A UNESCO World Heritage site."},
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("HistoriX")),
+
       body: SingleChildScrollView(  // FIXES OVERFLOW ISSUE
         child: Column(
+          mainAxisSize: MainAxisSize.min, // Prevents unnecessary expansion
           children: [
-            // Instagram-style Events Section
+            // Events Section (Instagram-style stories)
             Container(
-              height: 100,
+              height: 120, // Adjust height for better spacing
+              padding: EdgeInsets.symmetric(vertical: 10),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: events.length,
@@ -31,6 +34,7 @@ class HomeScreen extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         CircleAvatar(
                           radius: 35,
@@ -46,7 +50,7 @@ class HomeScreen extends StatelessWidget {
             ),
             Divider(),
 
-            // Posts Section (Use Expanded to avoid overflow)
+            // Posts Section
             ListView.builder(
               shrinkWrap: true,  // FIXES OVERFLOW ISSUE
               physics: NeverScrollableScrollPhysics(), // FIX SCROLL CONFLICT
@@ -77,7 +81,11 @@ class HomeScreen extends StatelessWidget {
 
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
-        child: Image.asset("assets/icons/chatbot_icon.png", width: 30, height: 30),
+        child: SizedBox( // Ensures correct icon rendering
+          width: 30,
+          height: 30,
+          child: Image.asset("assets/icons/chatbot_icon.png"),
+        ),
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen()));
         },
@@ -86,11 +94,19 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset("assets/icons/explore_icon.png", width: 30, height: 30),
+            icon: SizedBox( // Fix for missing icons
+              width: 30,
+              height: 30,
+              child: Image.asset("assets/icons/explore_icon.png"),
+            ),
             label: "Explore",
           ),
           BottomNavigationBarItem(
-            icon: Image.asset("assets/icons/profile_icon.png", width: 30, height: 30),
+            icon: SizedBox(
+              width: 30,
+              height: 30,
+              child: Image.asset("assets/icons/profile_icon.png"),
+            ),
             label: "Profile",
           ),
         ],
